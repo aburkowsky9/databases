@@ -16,11 +16,12 @@ describe('Persistent Node Chat Server', function() {
     });
     dbConnection.connect();
 
-       var tablename = "messages"; // TODO: fill this out
+    var tablename = 'messages'; // TODO: fill this out
 
     /* Empty the db table before each test so that multiple tests
      * (or repeated runs of the tests) won't screw each other up: */
-    dbConnection.query('truncate ' + tablename, done);
+    //dbConnection.query('truncate ' + tablename, done);
+    done();
   });
 
   afterEach(function() {
@@ -50,10 +51,10 @@ describe('Persistent Node Chat Server', function() {
         // TODO: You might have to change this test to get all the data from
         // your message table, since this is schema-dependent.
         var queryString = 'SELECT * FROM messages';
-        var queryArgs = [];
+        var queryArgs = ['messages', 'users'];
 
         // dbConnection.query(queryString, queryArgs, function(err, results) {
-          dbConnection.query(queryString, function(err, results) {
+        dbConnection.query(queryString, function(err, results) {
           // Should have one result:
           expect(results.length).to.equal(1);
 
@@ -68,11 +69,12 @@ describe('Persistent Node Chat Server', function() {
 
   it('Should output all messages from the DB', function(done) {
     // Let's insert a message into the db
-       var queryString = "";
-       var queryArgs = [];
+    var queryString = 'SELECT * FROM messages';
+    var queryArgs = [];
     // TODO - The exact query string and query args to use
     // here depend on the schema you design, so I'll leave
     // them up to you. */
+
 
     dbConnection.query(queryString, queryArgs, function(err) {
       if (err) { throw err; }

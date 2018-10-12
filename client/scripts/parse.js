@@ -1,6 +1,6 @@
 var Parse = {
 
-  server: `127.0.0.1:3000/classes/messages`,
+  server: '127.0.0.1:3000/classes/messages',
 
   create: function(message, successCB, errorCB = null) {
 
@@ -14,13 +14,13 @@ var Parse = {
         console.error('chatterbox: Failed to create message', error);
       }
     });
-      },
+  },
 
   readAll: function(successCB, errorCB = null) {
     $.ajax({
       url: Parse.server,
       type: 'GET',
-      data: { order: '-createdAt' },
+      // data: { order: '-createdAt' },
       contentType: 'application/json',
       success: successCB,
       error: errorCB || function(error) {
